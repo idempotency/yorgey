@@ -31,5 +31,14 @@ listFilter (C x xss) f | f x       = C x (listFilter xss f)
                        | otherwise = listFilter xss f
 
 skips :: [a] -> [[a]]
-skips []         = []
-skips xs@(x:xss) = [xs]
+skips xs = map (skip xs) [1..length xs]
+
+skip :: [a] -> Int -> [a]
+skip xs n = case drop (n-1) xs of
+              (y:ys) -> y : skip ys n
+              []     -> []
+
+localMaxima :: [Integer] -> [Integer]
+localMaxima (x:xs@(y:z:xss)) | (y > x && y > z) = y : (localMaxima xs)
+                             | otherwise        = localMaxima xs
+localMaxima _ = []
