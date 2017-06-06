@@ -24,8 +24,8 @@ doubleEveryOther :: [Integer] -> [Integer]
 doubleEveryOther []       = []
 doubleEveryOther [x]      = [x]
 doubleEveryOther (x:y:xs)
-  | (listLength (x:y:xs)) `mod` 2 == 0 = x * 2 : y : doubleEveryOther xs
-  | otherwise                          = x : y * 2 : doubleEveryOther xs
+  | ((listLength (x:y:xs)) `mod` 2 == 0) = x * 2 : y : doubleEveryOther xs
+  | otherwise                            = x : y * 2 : doubleEveryOther xs
 
 -- Exercise 3
 
